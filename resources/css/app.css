@@ -1,0 +1,26 @@
+@import './includes/header.css';
+@import './includes/footer.css';
+
+body,
+body *{
+    box-sizing: border-box;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.content{
+    width: 1440px;
+    margin: auto;
+    max-width: 1440px;
+    padding: 60px 0px;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+h1{
+    font-size: 46px;
+    margin-bottom: 40px;
+}
