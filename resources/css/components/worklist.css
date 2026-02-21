@@ -1,0 +1,29 @@
+.work-list{
+    margin-bottom: 120px;
+}
+.work-list h2{
+    margin-bottom: 40px;
+}
+.work-list ul{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding-left: 0px;
+    margin-bottom: 40px;
+}
+
+.work-list__more{
+    background: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s linear;
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+.work-list__more:hover{
+    transform: scale(0.98);
+}

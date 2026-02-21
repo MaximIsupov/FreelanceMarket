@@ -16,8 +16,13 @@
                 <a href="#">Биржа</a>
             </div>
             <div class="header__auth">
-                <a href="{{ route('register') }}">Регистрация</a>
-                <a href="{{ route('login') }}">Вход</a>
+                @auth
+                    <a href="{{ route('login') }}">Личный кабинет</a>
+                @endauth
+                @guest
+                    <a href="{{ route('register') }}">Регистрация</a>
+                    <a href="{{ route('login') }}">Вход</a>
+                @endguest
             </div>
         </div>
     </header>

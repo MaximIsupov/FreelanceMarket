@@ -1,0 +1,29 @@
+.product-card{
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    border: 1px solid black;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+.product-card__title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.product-card__more{
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    width: fit-content;
+    padding: 6px 12px;
+    margin-top: 10px;
+    user-select: none;
+    transition: all 0.2s linear;
+    display: block;
+}
+.product-card__more:hover{
+    transform: scale(0.98);
+}

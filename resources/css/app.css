@@ -1,5 +1,7 @@
 @import './includes/header.css';
 @import './includes/footer.css';
+@import './components/worklist.css';
+@import './components/productcard.css';
 
 body,
 body *{
