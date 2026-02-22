@@ -1,7 +1,8 @@
 @import './includes/header.css';
 @import './includes/footer.css';
-@import './components/worklist.css';
-@import './components/productcard.css';
+@import './components/work-list.css';
+@import './components/product-card.css';
+@import './components/work-detail.css';
 
 body,
 body *{

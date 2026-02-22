@@ -1,0 +1,19 @@
+.work-detail{
+    border: 1px solid black;
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+.work-detail__price,
+.work-detail__time{
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+.work-detail__price span,
+.work-detail__time span{
+    font-weight: 600;
+}
+.work-detail__description{
+    font-size: 20px;
+    margin-top: 30px;
+}

@@ -2,22 +2,20 @@
 
 namespace App\View\Components;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ProductCard extends Component
+class WorkDetail extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $link,
         public string $title,
-        public string $time,
+        public string $description = '',
         public string $price,
-        public User $user
+        public string $time = '',
     )
     {
         //
@@ -28,6 +26,6 @@ class ProductCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product-card');
+        return view('components.work-detail');
     }
 }

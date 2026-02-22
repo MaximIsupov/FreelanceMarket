@@ -12,10 +12,11 @@ class worklist extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $title,
-        public string $fullPageUrl,
+        public string $title = '',
+        public string $fullPageUrl = '',
         public string $fullPageText = "Смотреть все",
-        public array $posts = []
+        public array $posts = [],
+        public bool $latestPosts = false,
     )
     {
         //
