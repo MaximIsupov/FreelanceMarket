@@ -1,9 +1,11 @@
 @extends('layouts.base')
 
-@section('page.title', 'Вход')
+@section('page.title', $title)
 
 @section('content')
 <h1>
-    Вход
+    {{ $title }}
 </h1>
+<x-form :isLogin="true" class="form-register form" :btnText="$btnText">
+</x-form>
 @endsection

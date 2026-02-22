@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index(){
-        return view('login.login');
+        $data['title'] = "Вход";
+        $data['btnText'] = 'Войти';
+        return view('login.login', $data);
     }
 }
