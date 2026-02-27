@@ -12,16 +12,17 @@
         </a>
         <div class="header__menu">
             <div class="header__nav">
-                <a href="{{ route('home') }}">Главная</a>
-                <a href="#">Биржа</a>
+                <a href="{{ route('home') }}">{{ __('Главная') }}</a>
+                <a href="#">{{ __('Биржа') }}</a>
             </div>
             <div class="header__auth">
                 @auth
-                    <a href="{{ route('login') }}">Личный кабинет</a>
+                    <a href="{{ route('personal') }}">{{ __('Личный кабинет') }}</a>
+                    <a href="{{ route('logout') }}">{{ __('Выход') }}</a>
                 @endauth
                 @guest
-                    <a href="{{ route('register') }}">Регистрация</a>
-                    <a href="{{ route('login') }}">Вход</a>
+                    <a href="{{ route('login') }}">{{ __('Вход') }}</a>
+                    <a href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                 @endguest
             </div>
         </div>

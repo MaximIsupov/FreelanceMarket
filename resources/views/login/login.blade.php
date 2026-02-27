@@ -6,6 +6,6 @@
 <h1>
     {{ $title }}
 </h1>
-<x-form :isLogin="true" class="form-register form" :btnText="$btnText">
+<x-form :isLogin=true class="form-register form" :btnText="$btnText" method="POST" action="{{ route('login.authenticate') }}">
 </x-form>
 @endsection

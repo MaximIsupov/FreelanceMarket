@@ -6,6 +6,6 @@
 <h1>
     {{ $title }}
 </h1>
-<x-form action="/" type="post" class="form form-register" :isRegister="true" :btnText="$btnText">
+<x-form action="{{ route('register.store') }}" class="form form-register" :isRegister=true :btnText="$btnText">
 </x-form>
 @endsection
