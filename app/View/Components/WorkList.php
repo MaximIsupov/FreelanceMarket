@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class worklist extends Component
 {
@@ -13,10 +14,9 @@ class worklist extends Component
      */
     public function __construct(
         public string $title = '',
-        public string $fullPageUrl = '',
-        public string $fullPageText = "Смотреть все",
-        public array $posts = [],
+        public ?LengthAwarePaginator $posts = null,
         public bool $latestPosts = false,
+        public string $type = 'jobs',
     )
     {
         //

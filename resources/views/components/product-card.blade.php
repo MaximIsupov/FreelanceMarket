@@ -1,6 +1,6 @@
 <li {{ $attributes->merge(['class' => 'product-card']) }}>
-    <a class="product-card__title" href="{{ $link }}">{{ $title }}</a>
+    <a class="product-card__title" href="{{ route($type . '.show', $id) }}">{{ $title }}</a>
     <p>Срок: {{ $time }}</p>
     <p>Стоимость: {{ $price }}</p>
-    <a href="{{ $link }}" class="product-card__more">Подробнее</a>
+    <a href="{{ route($type . '.show', $id) }}" class="product-card__more">Подробнее</a>
 </li>

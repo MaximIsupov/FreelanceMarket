@@ -8,34 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
-    public function index(){
-        $data['services'] = [
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-        ];
+    public function index(Request $request){
+        $perPage = $request->input('per_page', 12);
+        $perPage = min(max($perPage, 5), 100);
 
-        return view('services.index', $data);
+        $services  = Service::query()
+            ->with(['user'])
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        return view('services.index', [
+            'services' => $services
+        ]);
     }
 
-    public function show($service)
+    public function show(Service $service)
     {
-        $data['title'] = 'Заголовок поста';
-        $data['description'] = 'Описание поста';
-        $data['price'] = '20 000 руб.';
-        $data['time'] = '2 дня';
-        
-        return view('services.show', $data);
+        $service->load('user');
+        return view('services.show', compact('service'));
     }
 
-        public function create()
+    public function create()
     {
         return view('services.create');
     }

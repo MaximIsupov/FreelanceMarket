@@ -13,10 +13,11 @@ class ProductCard extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $link,
+        public int $id,
         public string $title,
         public string $time,
         public string $price,
+        public string $type,
         public User $user
     )
     {

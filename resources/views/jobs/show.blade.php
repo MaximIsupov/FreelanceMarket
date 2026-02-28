@@ -1,9 +1,9 @@
 @extends('layouts.base')
 
-@section('page.title', $title)
+@section('page.title', $job['title']);
 
 @section('content')
-<x-work-detail :title="$title" :price="$price" :time="$time" :description="$description">
+<x-work-detail :title="$job['title']" :price="$job['price']" :time="$job['time']" :description="$job['description']">
 </x-work-detail>
 
 @endsection

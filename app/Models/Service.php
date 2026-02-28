@@ -19,4 +19,9 @@ class Service extends Model
         'time' => 'integer',
         'priceVague' => 'boolean'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

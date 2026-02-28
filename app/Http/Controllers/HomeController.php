@@ -3,31 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
     
     public function index(){
-        $data['sellersSectionTitle'] = "Последние заявки на выполнение работы от селлеров";
-        $data['sellersFullPageUrl'] = "/jobs";
-        $data['latestJobs'] = [
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-        ];
 
-        $data['freelancersSectionTitle'] = "Последние размещения услуг от фрилансеров";
-        $data['freelancersFullPageUrl'] = "/services";
-        $data['latestServices'] = [
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-        ];
-        return view('home.welcome', $data);
+        $latestJobs = Job::latest()->take(5)->paginate(99999);
+        $latestServices = Service::latest()->take(5)->paginate(99999);
+        return view('home.welcome', [
+            'latestJobs' => $latestJobs,
+            'latestServices' => $latestServices,
+        ]);
     }
 
 }

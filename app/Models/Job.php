@@ -18,4 +18,9 @@ class Job extends Model
         'active' => 'boolean',
         'time' => 'integer'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

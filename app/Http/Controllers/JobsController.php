@@ -8,33 +8,23 @@ use Illuminate\Support\Facades\Auth;
 
 class JobsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('per_page', 12);
+        $perPage = min(max($perPage, 5), 100);
 
-        $data['jobs'] = [
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/1', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/2', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/3', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-            ['link' => '/4', 'title' => 'Предложение работы', 'time' => '3 дня', 'price' => '20 000 руб.'],
-        ];
+        $jobs  = Job::query()
+            ->with(['user'])
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
 
-        return view('jobs.index', $data);
+        return view('jobs.index', ['jobs' => $jobs]);
     }
 
-    public function show($job)
+    public function show(Job $job)
     {
-        $data['title'] = 'Заголовок поста';
-        $data['description'] = 'Описание поста';
-        $data['price'] = '20 000 руб.';
-        $data['time'] = '2 дня';
-        
-        return view('jobs.show', $data);
+        $job->load('user');
+        return view('jobs.show', compact('job'));
     }
 
     public function create()

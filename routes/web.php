@@ -52,10 +52,10 @@ Route::prefix('services')->group(function()
     Route::put('/{service}', [ServicesController::class, 'update'])->name('services.update')->middleware('auth');
 });
 
-Route::prefix('personal')->group(function()
+Route::prefix('personal')->middleware('auth')->group(function()
 {
     Route::get('/', [PersonalController::class, 'index'])->name('personal');
-})->middleware('auth');
+});
 
 Route::get( '/logout', [LogoutController::class, 'index'])->name('logout');
 

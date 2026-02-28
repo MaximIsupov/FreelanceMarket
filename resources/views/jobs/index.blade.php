@@ -7,6 +7,6 @@
     @yield('page.title')
 </h1>
 
-<x-worklist :posts="$jobs">
+<x-worklist :posts="$jobs" type="jobs">
 </x-worklist>
 @endsection

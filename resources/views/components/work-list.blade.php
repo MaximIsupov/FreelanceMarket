@@ -3,17 +3,26 @@
         {{ $title }}
     </h2>
     {{ $slot }} <!-- На случай доп. инофрмации -->
-    <ul class="{{ $latestPosts }}">
+    <ul>
         @forelse ($posts as $post)
-            <x-product-card :link="$post['link']" :title="$post['title']" :time="$post['time']" :price="$post['price']">     
-            </x-product-card>
+            @isset($post['id'])
+                <x-product-card 
+                    :id="$post['id']"
+                    :title="$post['title']"
+                    :time="$post['time']"
+                    :price="$post['price']"
+                    :type="$type"
+                />
+            @endisset
         @empty
             <li class="empty">Пока нет объявлений</li>
         @endforelse
     </ul>
     @if ($latestPosts)
-        <a href="{{ $fullPageUrl }}" class="btn work-list__more">{{ $fullPageText }}</a>
+        <a href="{{ route($type) }}" class="btn work-list__more">{{ __("Смотреть все") }}</a>
     @else
-        <!-- Тут будет пагинация -->
+        <div class="mt-8 flex justify-center">
+            {{ $posts->links() }}
+        </div>
     @endif
 </section>
