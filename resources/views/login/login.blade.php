@@ -6,6 +6,10 @@
 <h1>
     {{ $title }}
 </h1>
-<x-form :isLogin=true class="form-register form" :btnText="$btnText" method="POST" action="{{ route('login.authenticate') }}">
-</x-form>
+<x-form.form method="POST" action="{{ route('login.authenticate') }}" class="form-register form" btn-text="{{ __('Войти') }}">
+
+    <x-form.input type="mail" name="email" placeholder="Электронная почта"></x-form.input>
+    <x-form.input type="password" name="password" placeholder="{{ __('Пароль') }}"></x-form.input>
+
+</x-form.form>
 @endsection

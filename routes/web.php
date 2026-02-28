@@ -34,11 +34,23 @@ Route::prefix('register')->group(function()
     Route::post( '/store', [RegisterController::class, 'store'])->name('register.store');
 });
 
-Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
-Route::get('/jobs/{job}', [JobsController::class, 'show'])->name('jobs.show');
+Route::prefix('jobs')->group(function()
+{
+    Route::get('/', [JobsController::class, 'index'])->name('jobs');
+    Route::post('/store', [JobsController::class, 'store'])->name('jobs.store');
+    Route::get('/create', [JobsController::class, 'create'])->name('jobs.create')->middleware('auth');
+    Route::get('/{job}', [JobsController::class, 'show'])->name('jobs.show');
+    Route::put('/{job}', [JobsController::class, 'update'])->name('jobs.update')->middleware('auth');
+});
 
-Route::get('/services', [ServicesController::class, 'index'])->name('services');
-Route::get('/services/{service}', [ServicesController::class, 'show'])->name('services.show');
+Route::prefix('services')->group(function()
+{
+    Route::get('/', [ServicesController::class, 'index'])->name('services');
+    Route::get('/create', [ServicesController::class, 'create'])->name('services.create')->middleware('auth');
+    Route::post('/', [ServicesController::class, 'store'])->name('services.store');
+    Route::get('/{service}', [ServicesController::class, 'show'])->name('services.show');
+    Route::put('/{service}', [ServicesController::class, 'update'])->name('services.update')->middleware('auth');
+});
 
 Route::prefix('personal')->group(function()
 {
