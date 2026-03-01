@@ -23,11 +23,18 @@ class JobsController extends Controller
 
     public function show(Job $job)
     {
-        $job->load('user');
+
+        $userId = Auth::id();
+        $job->load([
+            'user',
+            'offers',
+            'offers.user',
+        ]);
         $isCurrentUserOwner = $job->user->id == Auth::id();
         return view('jobs.show', [
             'job' => $job,
             'isCurrentUserOwner' => $isCurrentUserOwner,
+            'currentUserAlreadyOffered' => $job->hasOfferFromUser(),
         ]);
     }
 

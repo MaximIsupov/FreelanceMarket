@@ -4,6 +4,7 @@
 @import './components/work-list.css';
 @import './components/product-card.css';
 @import './components/work-detail.css';
+@import './components/offer-list.css';
 
 body,
 body *{

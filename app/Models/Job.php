@@ -23,4 +23,23 @@ class Job extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
+
+    public function hasOfferFromUser(?int $userId = null): bool
+    {
+        if (!$userId) {
+            $userId = auth()->id();
+        }
+        if (!$userId) {
+            return false;
+        }
+
+        return $this->offers()
+            ->where('user_id', $userId)
+            ->exists();
+    }
 }

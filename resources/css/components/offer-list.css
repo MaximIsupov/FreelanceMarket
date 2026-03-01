@@ -1,0 +1,26 @@
+.offers-list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+.offer-item{
+    border: 1px solid black;
+    padding: 15px 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.offer-item .actions{
+    display: flex;
+    column-gap: 12px;
+}
+.offer-item .actions form{
+    width: fit-content;
+    max-width: 100%;
+    margin: unset;
+    margin-top: 0px;
+}
+.offer-item .actions form button{
+    margin-top: 0px;
+}

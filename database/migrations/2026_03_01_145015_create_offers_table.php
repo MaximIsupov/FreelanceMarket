@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->text('message')->nullable();
             $table->float('price');
             $table->integer('time');
 

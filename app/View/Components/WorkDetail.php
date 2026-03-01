@@ -21,6 +21,7 @@ class WorkDetail extends Component
         public string $type = 'jobs',
         public ?User $user = null,
         public bool $isCurrentUserOwner = false,
+        public bool $currentUserAlreadyOffered = false,
     )
     {
         //

@@ -8,6 +8,7 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,12 +57,18 @@ Route::prefix('services')->group(function()
 Route::prefix('personal')->middleware('auth')->group(function()
 {
     Route::get('/', [PersonalController::class, 'index'])->name('personal');
+    Route::get('/offers', [PersonalController::class, 'offers'])->name('personal.offers');
 });
 
 Route::prefix('offers')->middleware('auth')->group(function()
 {
     Route::get('/{job}', [OfferController::class, 'create'])->name('offers.create');
     Route::post('/', [OfferController::class, 'store'])->name('offers.store');
+});
+
+Route::prefix('users')->group(function()
+{
+    Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
 });
 
 Route::get( '/logout', [LogoutController::class, 'index'])->name('logout');

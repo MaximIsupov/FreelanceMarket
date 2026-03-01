@@ -3,7 +3,7 @@
         {{ $title }}
     </h1>
     <div class="work-detail__author">
-        Заказчик: <a href="/users/{{ $user->id }}">{{ $user->name }}</a>
+        Заказчик: <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
     </div>
     <div class="work-detail__price">
         Цена: {{ $type == 'jobs' ? 'до ' : 'от ' }} <span>{{ $price }}</span> руб.
@@ -15,7 +15,11 @@
         {{ $description }}
     </div>
     @if (!$isCurrentUserOwner)
-        <a href="{{ route('offers.create', $id) }}" class="work-detail__btn">{{ __('Откликнуться') }}</a>
+        @if($currentUserAlreadyOffered)
+            <div class="work-detail__note">Вы уже откликнулись на заявку</div>
+        @else
+            <a href="{{ route('offers.create', $id) }}" class="work-detail__btn">{{ __('Откликнуться') }}</a>
+        @endif
     @else
         <div class="work-detail__note">Это ваша заявка</div>
     @endif
