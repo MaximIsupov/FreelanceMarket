@@ -24,7 +24,11 @@ class JobsController extends Controller
     public function show(Job $job)
     {
         $job->load('user');
-        return view('jobs.show', compact('job'));
+        $isCurrentUserOwner = $job->user->id == Auth::id();
+        return view('jobs.show', [
+            'job' => $job,
+            'isCurrentUserOwner' => $isCurrentUserOwner,
+        ]);
     }
 
     public function create()

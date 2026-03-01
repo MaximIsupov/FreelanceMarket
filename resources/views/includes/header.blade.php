@@ -13,7 +13,8 @@
         <div class="header__menu">
             <div class="header__nav">
                 <a href="{{ route('home') }}">{{ __('Главная') }}</a>
-                <a href="#">{{ __('Биржа') }}</a>
+                <a href="{{ route('jobs') }}">{{ __('Заявки селлеров') }}</a>
+                <a href="{{ route('services') }}">{{ __('Услуги фрилансеров') }}</a>
             </div>
             <div class="header__auth">
                 @auth

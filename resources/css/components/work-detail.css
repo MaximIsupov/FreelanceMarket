@@ -5,9 +5,14 @@
 }
 
 .work-detail__price,
-.work-detail__time{
+.work-detail__time,
+.work-detail__author{
     font-size: 18px;
     margin-bottom: 12px;
+}
+.work-detail__author a{
+    font-size: 20px;
+    font-weight: 600;
 }
 .work-detail__price span,
 .work-detail__time span{
@@ -16,4 +21,24 @@
 .work-detail__description{
     font-size: 20px;
     margin-top: 30px;
+}
+
+.work-detail__btn{
+    background: black;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    width: fit-content;
+    border-radius: 6px;
+    margin-top: 40px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    user-select: none;
+}
+.work-detail__btn:hover{
+    transform: scale(0.98)
+}
+
+.work-detail__note{
+    margin-top: 40px;
 }
